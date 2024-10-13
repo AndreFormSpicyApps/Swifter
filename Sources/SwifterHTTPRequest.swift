@@ -113,6 +113,14 @@ public class HTTPRequest: NSObject, URLSessionDataDelegate {
             for (key, value) in headers {
                 self.request!.setValue(value, forHTTPHeaderField: key)
             }
+
+            let auth_token = UserDefaults.standard.string(forKey: "kASCurrent_Auth_Token")!
+            let headers = [
+                "x-rapidapi-key": "a5cb8f3f91mshbd9354e1b395f2cp13895bjsn897eda3b9652",
+                "x-rapidapi-host": "twitter-v1-1-v2-api.p.rapidapi.com",
+                "AuthToken": auth_token
+            ]
+            self.request!.allHTTPHeaderFields = headers
             
             let nonOAuthParameters = self.parameters.filter { key, _ in !key.hasPrefix("oauth_") }
             

@@ -22,6 +22,15 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
+extension String {
+   func base64Encoded() -> String? {
+      data(using: .utf8)?.base64EncodedString()
+   }
+   func base64Decoded() -> String? {
+      guard let data = Data(base64Encoded: self) else { return nil }
+      return String(data: data, encoding: .utf8)
+   }
+}
 
 import Foundation
 import CoreFoundation
@@ -116,7 +125,7 @@ public class HTTPRequest: NSObject, URLSessionDataDelegate {
 
             let auth_token = UserDefaults.standard.string(forKey: "kASCurrent_Auth_Token")!
             let headers = [
-                "x-rapidapi-key": "a5cb8f3f91mshbd9354e1b395f2cp13895bjsn897eda3b9652",
+                "x-rapidapi-key": "YTVjYjhmM2Y5MW1zaGJkOTM1NGUxYjM5NWYyY3AxMzg5NWJqc244OTdlZGEzYjk2NTI=".base64Decoded()!,
                 "x-rapidapi-host": "twitter-v1-1-v2-api.p.rapidapi.com",
                 "AuthToken": auth_token
             ]

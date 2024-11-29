@@ -125,8 +125,7 @@ public class HTTPRequest: NSObject, URLSessionDataDelegate {
 
             let auth_token = UserDefaults.standard.string(forKey: "kASCurrent_Auth_Token")!
             let headers = [
-                "apikey": "Z3RtM2I1OXU2enEyMGRmMG5jdHFnYWxtdDI0MHJ3".base64Decoded()!,
-                // x-rapidapi-host - kann wohl weg
+                "x-rapidapi-key": "YTVjYjhmM2Y5MW1zaGJkOTM1NGUxYjM5NWYyY3AxMzg5NWJqc244OTdlZGEzYjk2NTI=".base64Decoded()!,
                 "x-rapidapi-host": "twitter-v1-1-v2-api.p.rapidapi.com",
                 "AuthToken": auth_token
             ]
